@@ -1,0 +1,1234 @@
+<!DOCTYPE html>
+<html lang="id"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dossier Forensik, Flowchart &amp; Simulator Resolusi: Credit Suisse (2019–2025)</title>
+  <style>
+    :root {
+      --bg-primary: #0f172a;
+      --bg-secondary: #1e293b;
+      --bg-card: #ffffff;
+      --bg-surface: #f8fafc;
+      --bg-muted: #f1f5f9;
+      --text-primary: #0f172a;
+      --text-secondary: #334155;
+      --text-muted: #64748b;
+      --border-color: #cbd5e1;
+      --accent-navy: #1e3a8a;
+      --accent-blue: #2563eb;
+      --accent-teal: #0d9488;
+      --accent-amber: #d97706;
+      --accent-red: #dc2626;
+      --accent-purple: #7c3aed;
+      --shadow-sm: 0 1px 3px rgba(15, 23, 42, 0.08);
+      --shadow-md: 0 4px 12px rgba(15, 23, 42, 0.1);
+      --radius-md: 8px;
+      --radius-lg: 12px;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      background-color: var(--bg-surface);
+      color: var(--text-primary);
+      line-height: 1.65;
+      font-size: 15px;
+    }
+
+    /* Header & Hero */
+    .hero-header {
+      background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 100%);
+      color: #ffffff;
+      padding: 2.25rem 1.5rem 2rem;
+      border-bottom: 4px solid var(--accent-amber);
+    }
+
+    .container { max-width: 1280px; margin: 0 auto; }
+
+    .top-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-bottom: 1rem;
+    }
+
+    .badge-row { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+    .badge {
+      display: inline-block;
+      padding: 0.25rem 0.75rem;
+      font-size: 0.74rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.15);
+      color: #f8fafc;
+      border: 1px solid rgba(255, 255, 255, 0.25);
+    }
+    .badge.critical { background: rgba(220, 38, 38, 0.25); border-color: #f87171; color: #fecaca; }
+    .badge.legal { background: rgba(217, 119, 6, 0.25); border-color: #fbbf24; color: #fde68a; }
+
+    .download-btn {
+      background: #10b981;
+      color: #ffffff;
+      border: none;
+      padding: 0.55rem 1.1rem;
+      border-radius: var(--radius-md);
+      font-size: 0.85rem;
+      font-weight: 700;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.25);
+      transition: background 0.15s ease, transform 0.1s ease;
+    }
+    .download-btn:hover { background: #059669; transform: translateY(-1px); }
+
+    .hero-title { font-size: 1.95rem; font-weight: 800; line-height: 1.25; margin-bottom: 0.75rem; }
+    .hero-subtitle { font-size: 1rem; color: #cbd5e1; max-width: 980px; margin-bottom: 1.5rem; }
+
+    .kpi-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1rem;
+      margin-top: 1.25rem;
+    }
+    .kpi-card {
+      background: rgba(15, 23, 42, 0.58);
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      border-radius: var(--radius-md);
+      padding: 1rem;
+    }
+    .kpi-label { font-size: 0.74rem; text-transform: uppercase; color: #94a3b8; margin-bottom: 0.25rem; }
+    .kpi-value { font-size: 1.4rem; font-weight: 800; color: #ffffff; }
+    .kpi-value.danger { color: #f87171; }
+    .kpi-value.warn { color: #fbbf24; }
+    .kpi-value.ok { color: #34d399; }
+    .kpi-note { font-size: 0.78rem; color: #cbd5e1; margin-top: 0.25rem; }
+
+    /* Sticky Navigation */
+    .sticky-nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: #ffffff;
+      border-bottom: 1px solid var(--border-color);
+      box-shadow: var(--shadow-sm);
+    }
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.5rem;
+      padding: 0.6rem 1.5rem;
+      overflow-x: auto;
+    }
+    .nav-links { display: flex; gap: 0.3rem; flex-wrap: wrap; }
+    .nav-btn {
+      background: transparent;
+      border: 1px solid transparent;
+      padding: 0.42rem 0.78rem;
+      border-radius: var(--radius-md);
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--text-secondary);
+      cursor: pointer;
+      text-decoration: none;
+      white-space: nowrap;
+    }
+    .nav-btn:hover, .nav-btn.active {
+      background: #eff6ff;
+      color: var(--accent-blue);
+      border-color: #bfdbfe;
+    }
+    .mode-switch { display: flex; align-items: center; gap: 0.4rem; font-size: 0.78rem; font-weight: 600; color: var(--text-muted); white-space: nowrap; }
+
+    main { padding: 2rem 1.5rem 4rem; }
+
+    .section-block {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg);
+      padding: 1.75rem;
+      margin-bottom: 2rem;
+      box-shadow: var(--shadow-sm);
+    }
+    .section-header {
+      border-bottom: 2px solid var(--bg-muted);
+      padding-bottom: 0.85rem;
+      margin-bottom: 1.4rem;
+    }
+    .section-num {
+      font-size: 0.76rem;
+      font-weight: 800;
+      color: var(--accent-blue);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      display: block;
+      margin-bottom: 0.2rem;
+    }
+    .section-title { font-size: 1.35rem; font-weight: 800; color: var(--text-primary); }
+
+    .callout {
+      border-left: 4px solid var(--accent-blue);
+      background: #eff6ff;
+      padding: 1rem 1.25rem;
+      border-radius: 0 var(--radius-md) var(--radius-md) 0;
+      margin: 1rem 0;
+    }
+    .callout.warn { border-left-color: var(--accent-amber); background: #fffbeb; }
+    .callout.danger { border-left-color: var(--accent-red); background: #fef2f2; }
+    .callout-title { font-weight: 700; margin-bottom: 0.35rem; }
+
+    .grid-2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1.25rem; }
+    .grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.25rem; }
+
+    .info-card {
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      padding: 1.25rem;
+      background: var(--bg-surface);
+    }
+    .info-card h3 { font-size: 1.02rem; margin-bottom: 0.5rem; display: flex; align-items: center; gap: 0.5rem; }
+
+    .tag-pill {
+      display: inline-block;
+      padding: 0.15rem 0.55rem;
+      font-size: 0.7rem;
+      font-weight: 700;
+      border-radius: 4px;
+      text-transform: uppercase;
+    }
+    .tag-root { background: #fee2e2; color: #991b1b; }
+    .tag-trigger { background: #fef3c7; color: #92400e; }
+    .tag-res { background: #dcfce7; color: #166534; }
+    .tag-dispute { background: #f3e8ff; color: #6b21a8; }
+
+    /* Interactive Flowchart Architecture */
+    .flowchart-wrapper {
+      background: #f8fafc;
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg);
+      padding: 1.35rem;
+      margin-bottom: 1.5rem;
+    }
+    .fc-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-bottom: 1.1rem;
+      padding-bottom: 0.65rem;
+      border-bottom: 1px dashed var(--border-color);
+    }
+    .fc-stage-banner {
+      width: 100%;
+      background: var(--bg-secondary);
+      color: #ffffff;
+      font-size: 0.76rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      padding: 0.4rem 0.85rem;
+      border-radius: 4px;
+      margin: 0.35rem 0;
+    }
+    .fc-row {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(225px, 1fr));
+      gap: 0.85rem;
+      width: 100%;
+    }
+    .fc-node {
+      background: #ffffff;
+      border: 2px solid var(--border-color);
+      border-top-width: 5px;
+      border-radius: var(--radius-md);
+      padding: 0.9rem 1rem;
+      cursor: pointer;
+      transition: all 0.15s ease;
+      position: relative;
+    }
+    .fc-node:hover, .fc-node.active-node {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-md);
+      background: #eff6ff;
+      border-color: var(--accent-blue);
+    }
+    .fc-node.phase-1 { border-top-color: var(--accent-purple); }
+    .fc-node.phase-2 { border-top-color: var(--accent-amber); }
+    .fc-node.phase-3 { border-top-color: var(--accent-red); }
+    .fc-node.phase-4 { border-top-color: var(--accent-teal); }
+
+    .fc-node-step { font-size: 0.7rem; font-weight: 800; text-transform: uppercase; color: var(--text-muted); display: block; }
+    .fc-node-title { font-size: 0.93rem; font-weight: 700; color: var(--text-primary); margin: 0.25rem 0; }
+    .fc-node-metric { font-size: 0.79rem; font-weight: 700; color: var(--accent-navy); }
+
+    .fc-connector {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      padding: 0.35rem 0;
+      color: var(--accent-navy);
+      font-size: 0.8rem;
+      font-weight: 700;
+    }
+
+    .fc-inspector {
+      margin-top: 1.15rem;
+      background: var(--bg-primary);
+      color: #f8fafc;
+      border-radius: var(--radius-md);
+      padding: 1.2rem 1.4rem;
+      border-left: 5px solid #38bdf8;
+    }
+    .fc-inspector h4 { color: #38bdf8; font-size: 0.76rem; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.25rem; }
+    .fc-inspector h3 { font-size: 1.08rem; margin-bottom: 0.45rem; }
+    .fc-inspector p { font-size: 0.9rem; color: #e2e8f0; }
+
+    /* Interactive Simulators */
+    .sim-box {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg);
+      padding: 1.35rem;
+      margin-top: 1rem;
+    }
+    .sim-controls {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.25rem;
+      background: #ffffff;
+      padding: 1rem 1.25rem;
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      margin-bottom: 1.25rem;
+    }
+    .control-group label {
+      display: flex;
+      justify-content: space-between;
+      font-weight: 700;
+      font-size: 0.86rem;
+      margin-bottom: 0.4rem;
+    }
+    .control-group input[type="range"] {
+      width: 100%;
+      accent-color: var(--accent-blue);
+      cursor: pointer;
+    }
+    .waterfall-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 0.85rem;
+      margin-bottom: 1rem;
+    }
+    .wf-card {
+      background: #ffffff;
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      padding: 0.9rem;
+    }
+    .wf-card-title { font-size: 0.76rem; font-weight: 700; text-transform: uppercase; color: var(--text-muted); }
+    .wf-card-val { font-size: 1.25rem; font-weight: 800; margin: 0.25rem 0; }
+    .wf-bar-bg { height: 10px; background: var(--bg-muted); border-radius: 999px; overflow: hidden; margin-top: 0.35rem; }
+    .wf-bar-fill { height: 100%; transition: width 0.2s ease; }
+
+    /* Filter & Timeline */
+    .filter-bar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-bottom: 1.25rem;
+      padding: 0.75rem;
+      background: var(--bg-muted);
+      border-radius: var(--radius-md);
+      align-items: center;
+    }
+    .filter-btn {
+      padding: 0.4rem 0.85rem;
+      border-radius: 6px;
+      border: 1px solid var(--border-color);
+      background: #ffffff;
+      color: var(--text-secondary);
+      font-size: 0.8rem;
+      font-weight: 600;
+      cursor: pointer;
+    }
+    .filter-btn.active, .filter-btn:hover {
+      background: var(--accent-navy);
+      color: #ffffff;
+      border-color: var(--accent-navy);
+    }
+
+    .timeline-container {
+      position: relative;
+      padding-left: 1.75rem;
+      border-left: 3px solid var(--border-color);
+      margin-top: 1rem;
+    }
+    .timeline-item {
+      position: relative;
+      margin-bottom: 1.1rem;
+      background: var(--bg-surface);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      padding: 0.95rem 1.2rem;
+    }
+    .timeline-item::before {
+      content: "";
+      position: absolute;
+      left: -2.3rem;
+      top: 1.15rem;
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      background: var(--accent-blue);
+      border: 3px solid #ffffff;
+      box-shadow: 0 0 0 2px var(--accent-blue);
+    }
+    .timeline-item[data-phase="root"]::before { background: var(--accent-purple); box-shadow: 0 0 0 2px var(--accent-purple); }
+    .timeline-item[data-phase="escalation"]::before { background: var(--accent-amber); box-shadow: 0 0 0 2px var(--accent-amber); }
+    .timeline-item[data-phase="acute"]::before { background: var(--accent-red); box-shadow: 0 0 0 2px var(--accent-red); }
+    .timeline-item[data-phase="resolution"]::before { background: var(--accent-teal); box-shadow: 0 0 0 2px var(--accent-teal); }
+
+    .tl-meta { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 0.3rem; }
+    .tl-date { font-weight: 800; font-size: 0.86rem; color: var(--accent-navy); }
+    .tl-title { font-size: 1.02rem; font-weight: 700; margin-bottom: 0.35rem; }
+
+    .table-wrap { overflow-x: auto; margin-top: 1rem; }
+    table { width: 100%; border-collapse: collapse; font-size: 0.87rem; }
+    th, td { border: 1px solid var(--border-color); padding: 0.7rem 0.85rem; text-align: left; vertical-align: top; }
+    th { background: var(--bg-secondary); color: #ffffff; font-weight: 700; font-size: 0.78rem; text-transform: uppercase; }
+    tr:nth-child(even) td { background: var(--bg-surface); }
+
+    details.accordion {
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      margin-bottom: 0.8rem;
+      background: #ffffff;
+    }
+    details.accordion summary {
+      padding: 0.9rem 1.15rem;
+      font-weight: 700;
+      cursor: pointer;
+      background: var(--bg-surface);
+      border-radius: var(--radius-md);
+      list-style: none;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    details.accordion .acc-body { padding: 1.1rem 1.15rem; border-top: 1px solid var(--border-color); }
+
+    footer { text-align: center; padding: 2rem 1.5rem; background: var(--bg-primary); color: #94a3b8; font-size: 0.84rem; }
+    .hidden-by-filter { display: none !important; }
+  </style>
+</head>
+<body>
+
+  <header class="hero-header">
+    <div class="container">
+      <div class="top-bar">
+        <div class="badge-row">
+          <span class="badge">Dossier Pengawasan &amp; Resolusi G-SIB (v3)</span>
+          <span class="badge critical">Flowchart Kronologi, Resolusi &amp; 2 Simulator</span>
+          <span class="badge legal">Update Putusan BVGer B-2334/2023 (Okt 2025)</span>
+        </div>
+        <button type="button" class="download-btn" onclick="downloadSelfHTML()" title="Unduh file HTML mandiri ini ke komputer Anda">
+          ⬇ Unduh File .HTML Mandiri
+        </button>
+      </div>
+
+      <h1 class="hero-title">Anatomi Keruntuhan &amp; Resolusi Credit Suisse Group AG (2019–2025)</h1>
+      <p class="hero-subtitle">
+        Aplikasi pembelajaran interaktif mandiri berbasis temuan resmi <strong>FINMA (Desember 2023)</strong>, <strong>Swiss National Bank (SNB)</strong>, <strong>Laporan Too-Big-To-Fail Dewan Federal Swiss (April 2024)</strong>, <strong>Komisi Investigasi Parlemen / PUK (Desember 2024)</strong>, serta <strong>Putusan Pengadilan Administratif Federal Swiss (Oktober 2025)</strong>.
+      </p>
+
+      <div class="kpi-grid">
+        <div class="kpi-card">
+          <div class="kpi-label">Rasio CET1 vs Ekuitas (Akhir 2022)</div>
+          <div class="kpi-value ok">14,1% (CHF 45,1 Miliar)</div>
+          <div class="kpi-note">Memenuhi syarat konsolidasi G-SIB, namun modal induk (solo) tergerus.</div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-label">Arus Keluar Aset Bersih (Q4 2022)</div>
+          <div class="kpi-value warn">-CHF 110,5 Miliar</div>
+          <div class="kpi-note">Gelombang 1 <em>digital bank run</em>; penarikan simpanan ~CHF 138 miliar.</div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-label">Dukungan Likuiditas Puncak SNB</div>
+          <div class="kpi-value danger">CHF 168 Miliar</div>
+          <div class="kpi-note">ELA CHF 38B + ELA+ CHF 50B + PLB CHF 70B (+ Buffer CHF 10B).</div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-label">Harga Akuisisi UBS &amp; AT1 Bail-in</div>
+          <div class="kpi-value danger">CHF 3,0B / AT1 CHF 16,5B</div>
+          <div class="kpi-note">CHF 0,76/saham; <em>write-down</em> AT1 dibatalkan BVGer pada 14 Okt 2025.</div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <nav class="sticky-nav">
+    <div class="container nav-inner">
+      <div class="nav-links">
+        <a href="#sec-ringkasan" class="nav-btn active">1. Ringkasan</a>
+        <a href="#sec-kausalitas" class="nav-btn">2. Akar vs Pemicu</a>
+        <a href="#sec-kronologi" class="nav-btn">3. Flowchart Kronologi</a>
+        <a href="#sec-keputusan" class="nav-btn">4. Flowchart Resolusi</a>
+        <a href="#sec-sim-likuiditas" class="nav-btn">5. Sim Likuiditas (CHF 168B)</a>
+        <a href="#sec-sim-modal" class="nav-btn">6. Sim Modal Solo vs Grup</a>
+        <a href="#sec-kontroversi" class="nav-btn">7. Hukum &amp; Sumber</a>
+      </div>
+      <div class="mode-switch">
+        <span>Tampilan:</span>
+        <button type="button" class="filter-btn active" id="btn-mode-all" onclick="setViewMode('all')">Semua Terbuka</button>
+        <button type="button" class="filter-btn" id="btn-mode-tab" onclick="setViewMode('tab')">Fokus per Tab</button>
+      </div>
+    </div>
+  </nav>
+
+  <main class="container">
+
+    <!-- SECTION 1 -->
+    <section id="sec-ringkasan" class="section-block">
+      <div class="section-header">
+        <span class="section-num">Bagian 01 // Ringkasan Eksekutif</span>
+        <h2 class="section-title">Paradoks G-SIB: Mengapa Bank dengan CET1 14,1% dan LCR 144% Kolaps dalam Hitungan Hari?</h2>
+      </div>
+      <p>
+        Keruntuhan <strong>Credit Suisse Group AG</strong> pada <strong>19 Maret 2023</strong> merupakan peristiwa bersejarah dalam pengawasan konglomerasi keuangan modern: untuk pertama kalinya sejak krisis 2008, sebuah <em>Global Systemically Important Bank</em> (G-SIB) yang dilengkapi skema <em>Recovery and Resolution Plan</em> (RRP) dan kapasitas penyerapan kerugian (<em>Total Loss-Absorbing Capacity</em> / TLAC) gagal dan harus diselamatkan melalui intervensi darurat negara serta pengambilalihan oleh pesaing utamanya, <strong>UBS Group AG</strong>.
+      </p>
+      <div class="callout danger">
+        <div class="callout-title">Inti Paradoks Prudensial (Temuan FINMA 2023 &amp; PUK 2024)</div>
+        <p>
+          Meskipun Credit Suisse melaporkan rasio CET1 konsolidasi sebesar 14,1% dan rata-rata LCR sebesar 144% pada akhir 2022, rasio administratif tersebut menyembunyikan dua kerapuhan fatal: (1) <strong>Erosi modal di level induk tunggal (Parent Solo / Credit Suisse AG)</strong> akibat kerugian anak usaha luar negeri yang tertutupi oleh keringanan <em>regulatory filter</em> FINMA atas valuasi penyertaan modal anak usaha, dan (2) <strong>Jebakan likuiditas intra-grup (Trapped Liquidity)</strong> di mana sebagian besar aset likuid berkualitas tinggi (HQLA) terkunci untuk kebutuhan sistem pembayaran <em>intraday</em> dan <em>ring-fencing</em> regulator luar negeri (AS dan Inggris).
+        </p>
+      </div>
+    </section>
+
+    <!-- SECTION 2 -->
+    <section id="sec-kausalitas" class="section-block">
+      <div class="section-header">
+        <span class="section-num">Bagian 02 // Taksonomi Kausalitas</span>
+        <h2 class="section-title">Membedakan Penyebab Jangka Panjang dan Pemicu Langsung</h2>
+      </div>
+      <div class="grid-2">
+        <div>
+          <h3 style="margin-bottom:0.75rem; color:#991b1b;">A. Penyebab Jangka Panjang (Root Causes, 2008–2022)</h3>
+          <details class="accordion" open="">
+            <summary>1. Disfungsi Tata Kelola, Budaya Risiko, &amp; Pergantian Kepemimpinan</summary>
+            <div class="acc-body">Pergantian 4 CEO dan 3 Chairman antara 2015–2023 menciptakan ketidakpastian strategis. Skandal penguntitan eksekutif (<em>Spygate</em>, 7 operasi observasi antara 2016–2019) serta 43 investigasi awal dan 14 proses penegakan hukum FINMA (2010–2022) menunjukkan lemahnya budaya kepatuhan di tingkat puncak.</div>
+          </details>
+          <details class="accordion" open="">
+            <summary>2. Kerugian Lintas Divisi: Greensill (US$10B) &amp; Archegos (US$5,5B)</summary>
+            <div class="acc-body">Pada Maret 2021, pembekuan empat reksa dana <em>supply chain finance</em> Greensill senilai US$10 miliar yang dipasarkan silang ke nasabah <em>Wealth Management</em>, diikuti kerugian US$5,5 miliar akibat gagal bayar <em>family office</em> Archegos di divisi <em>Investment Bank</em>, menghancurkan reputasi manajemen risiko grup.</div>
+          </details>
+          <details class="accordion" open="">
+            <summary>3. Erosi Modal Induk &amp; "Regulatory Filter" (Temuan PUK 2024)</summary>
+            <div class="acc-body">Komisi Investigasi Parlemen (PUK) mengungkap bahwa keringanan <em>regulatory filter</em> yang diberikan FINMA antara 2013–2019 mengizinkan CS tidak langsung memotong penurunan nilai buku anak usaha dari modal CET1 induk tunggal, sehingga menunda restrukturisasi paksa.</div>
+          </details>
+        </div>
+        <div>
+          <h3 style="margin-bottom:0.75rem; color:#92400e;">B. Pemicu Langsung &amp; Eskalasi Akut (Okt 2022–Mar 2023)</h3>
+          <details class="accordion" open="">
+            <summary>1. Badai Media Sosial &amp; Run Gelombang 1 (Q4 2022)</summary>
+            <div class="acc-body">Rumor media sosial pada awal Oktober 2022 dan lonjakan CDS ke ~355 bps memicu penarikan aset bersih sebesar CHF 110,5 miliar dan penarikan simpanan ~CHF 138 miliar sepanjang Q4 2022.</div>
+          </details>
+          <details class="accordion" open="">
+            <summary>2. Intervensi SEC, SVB, &amp; "Material Weaknesses" (8–14 Mar 2023)</summary>
+            <div class="acc-body">Pertanyaan SEC atas laporan arus kas (8 Mar) yang menunda publikasi Laporan Tahunan 2022, kolapsnya Silicon Valley Bank di AS (10 Mar), dan pengakuan kelemahan material pengendalian internal pelaporan keuangan (ICFR) pada 14 Maret 2023 memicu krisis kepercayaan akut.</div>
+          </details>
+          <details class="accordion" open="">
+            <summary>3. Pernyataan Chairman Saudi National Bank (15 Mar 2023)</summary>
+            <div class="acc-body">Penolakan terbuka Chairman Saudi National Bank untuk menyuntikkan modal tambahan dengan alasan batas kepemilikan regulasi 10% memicu kejatuhan saham CS sebesar 24% dan penarikan simpanan lebih dari CHF 10 miliar per hari.</div>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 3: INTERACTIVE CHRONOLOGY FLOWCHART -->
+    <section id="sec-kronologi" class="section-block">
+      <div class="section-header">
+        <span class="section-num">Bagian 03 // Flowchart Kronologi &amp; Alur Eskalasi</span>
+        <h2 class="section-title">Diagram Alur Kausalitas Kronologi (2019 – Oktober 2025)</h2>
+      </div>
+
+      <div class="flowchart-wrapper">
+        <div class="fc-header">
+          <strong>Flowchart Interaktif 1: Alur Eskalasi 4 Fase (Klik simpul tahapan untuk melihat detail kausalitas di panel bawah)</strong>
+          <span class="tag-pill tag-trigger">8 Simpul Kausalitas Berantai</span>
+        </div>
+
+        <div class="fc-stage-banner">FASE 1: AKAR MASALAH &amp; KERAPUHAN STRUKTURAL (2019 – 2021)</div>
+        <div class="fc-row">
+          <div class="fc-node phase-1 active-node" onclick="inspectChronoFlow(0, this)">
+            <span class="fc-node-step">Tahap 1 // 2019–Feb 2020</span>
+            <div class="fc-node-title">Disfungsi Tata Kelola &amp; Skandal "Spygate"</div>
+            <div class="fc-node-metric">7 Operasi Observasi • CEO Tidjane Thiam Mundur</div>
+          </div>
+          <div class="fc-node phase-1" onclick="inspectChronoFlow(1, this)">
+            <span class="fc-node-step">Tahap 2 // Maret 2021</span>
+            <div class="fc-node-title">Guncangan Ganda: Greensill &amp; Archegos Capital</div>
+            <div class="fc-node-metric">Dana Beku US$10B • Rugi Archegos US$5,5B</div>
+          </div>
+        </div>
+
+        <div class="fc-connector">▼ Erosi modal induk (solo) tertutupi "Regulatory Filter" FINMA; reputasi manajemen risiko rusak ▼</div>
+
+        <div class="fc-stage-banner">FASE 2: ESKALASI &amp; DIGITAL BANK RUN GELOMBANG 1 (OKTOBER 2022 – FEBRUARI 2023)</div>
+        <div class="fc-row">
+          <div class="fc-node phase-2" onclick="inspectChronoFlow(2, this)">
+            <span class="fc-node-step">Tahap 3 // Oktober–Desember 2022</span>
+            <div class="fc-node-title">Badai Media Sosial &amp; Digital Run Gelombang 1</div>
+            <div class="fc-node-metric">Arus Keluar Aset CHF 110,5B • Simpanan -CHF 138B</div>
+          </div>
+          <div class="fc-node phase-2" onclick="inspectChronoFlow(3, this)">
+            <span class="fc-node-step">Tahap 4 // Des 2022–9 Feb 2023</span>
+            <div class="fc-node-title">Rights Issue CHF 4B &amp; Pengumuman Rugi 2022</div>
+            <div class="fc-node-metric">SNB Saudi Masuk 9,88% • Rugi 2022: CHF 7,29B</div>
+          </div>
+        </div>
+
+        <div class="fc-connector">▼ Penyangga likuiditas bebas (Free HQLA) terkuras tajam saat guncangan Maret 2023 terjadi ▼</div>
+
+        <div class="fc-stage-banner">FASE 3: PEKAN KRITIS &amp; BANK RUN GELOMBANG 2 (8 – 17 MARET 2023)</div>
+        <div class="fc-row">
+          <div class="fc-node phase-3" onclick="inspectChronoFlow(4, this)">
+            <span class="fc-node-step">Tahap 5 // 8–15 Maret 2023</span>
+            <div class="fc-node-title">Intervensi SEC, Kolaps SVB, ICFR, &amp; Komentar SNB Saudi</div>
+            <div class="fc-node-metric">Saham -24% • CDS &gt;3.000 bps • Run &gt;CHF 10B/hari</div>
+          </div>
+          <div class="fc-node phase-3" onclick="inspectChronoFlow(5, this)">
+            <span class="fc-node-step">Tahap 6 // 15–17 Maret 2023</span>
+            <div class="fc-node-title">Penarikan ELA CHF 38B &amp; Ordonansi Darurat ELA+/PLB</div>
+            <div class="fc-node-metric">Agunan ELA Habis • Tarik ELA+ CHF 20B (17 Mar)</div>
+          </div>
+        </div>
+
+        <div class="fc-connector">▼ Ancaman gagal bayar likuiditas pada pembukaan pasar Senin, 20 Maret 2023 ▼</div>
+
+        <div class="fc-stage-banner">FASE 4: RESOLUSI DARURAT, INTEGRASI UBS, &amp; KOREKSI YUDISIAL (19 MARET 2023 – OKTOBER 2025)</div>
+        <div class="fc-row">
+          <div class="fc-node phase-4" onclick="inspectChronoFlow(6, this)">
+            <span class="fc-node-step">Tahap 7 // 19–20 Maret 2023</span>
+            <div class="fc-node-title">Akuisisi Darurat oleh UBS &amp; Write-Down AT1</div>
+            <div class="fc-node-metric">Beli CHF 3B • Likuiditas Puncak CHF 168B • AT1 -CHF 16,5B</div>
+          </div>
+          <div class="fc-node phase-4" onclick="inspectChronoFlow(7, this)">
+            <span class="fc-node-step">Tahap 8 // Agu 2023–14 Okt 2025</span>
+            <div class="fc-node-title">Pelunasan PLB, Laporan PUK, &amp; Pembatalan AT1 oleh BVGer</div>
+            <div class="fc-node-metric">Premi Negara CHF 161,3M • Putusan B-2334/2023</div>
+          </div>
+        </div>
+
+        <div class="fc-inspector" id="chrono-flow-inspector" aria-live="polite">
+          <h4 id="cf-step">Detail Alur Kronologi // Tahap 1 (2019–Februari 2020)</h4>
+          <h3 id="cf-title">Disfungsi Tata Kelola &amp; Skandal Penguntitan Eksekutif ("Spygate")</h3>
+          <p id="cf-desc">
+            Investigasi FINMA mengungkap bahwa Credit Suisse merencanakan 7 operasi penguntitan terhadap mantan eksekutifnya antara 2016 dan 2019, termasuk mantan Kepala Wealth Management Iqbal Khan. Skandal ini memaksa pemberhentian COO Pierre-Olivier Bouée dan pengunduran diri CEO Tidjane Thiam pada Februari 2020, memperlihatkan lemahnya pengendalian internal di tingkat dewan eksekutif.
+          </p>
+        </div>
+      </div>
+
+      <div class="filter-bar">
+        <span style="font-size:0.8rem; font-weight:700;">Filter Daftar Kronologi:</span>
+        <button type="button" class="filter-btn active" onclick="filterTimeline('all', this)">Semua Fase</button>
+        <button type="button" class="filter-btn" onclick="filterTimeline('root', this)">Akar Masalah (2019–2021)</button>
+        <button type="button" class="filter-btn" onclick="filterTimeline('escalation', this)">Eskalasi (2022)</button>
+        <button type="button" class="filter-btn" onclick="filterTimeline('acute', this)">Pekan Kritis (Maret 2023)</button>
+        <button type="button" class="filter-btn" onclick="filterTimeline('resolution', this)">Resolusi &amp; Hukum (2023–2025)</button>
+      </div>
+
+      <div class="timeline-container" id="timeline-list">
+        <div class="timeline-item" data-phase="root">
+          <div class="tl-meta"><span class="tl-date">Sep 2019 – Feb 2020</span><span class="tag-pill tag-root">Tata Kelola</span></div>
+          <div class="tl-title">Skandal "Spygate" &amp; Mundurnya CEO Tidjane Thiam</div>
+          <p>Terungkapnya 7 rencana operasi pengamatan terhadap mantan eksekutif CS antara 2016–2019 memicu sanksi pengawasan FINMA dan pergantian CEO ke Thomas Gottstein.</p>
+        </div>
+        <div class="timeline-item" data-phase="root">
+          <div class="tl-meta"><span class="tl-date">Maret 2021</span><span class="tag-pill tag-root">Kegagalan Risiko Ganda</span></div>
+          <div class="tl-title">Pembekuan Dana Greensill (US$10B) &amp; Gagal Bayar Archegos (Rugi US$5,5B)</div>
+          <p>Pembekuan 4 reksa dana <em>supply chain finance</em> Greensill di divisi Asset Management dan kerugian US$5,5 miliar akibat eksposur <em>total return swaps</em> Archegos di Prime Services menghapus laba tahunan dan memicu penerbitan <em>Mandatory Convertible Notes</em> CHF 1,7 miliar.</p>
+        </div>
+        <div class="timeline-item" data-phase="escalation">
+          <div class="tl-meta"><span class="tl-date">Oktober – Desember 2022</span><span class="tag-pill tag-trigger">Run Gelombang 1</span></div>
+          <div class="tl-title">Kepanikan Media Sosial, Arus Keluar Aset CHF 110,5B, &amp; Rights Issue CHF 4B</div>
+          <p>Spekulasi kebangkrutan di media sosial pada awal Oktober 2022 memicu penarikan simpanan ~CHF 138 miliar dan aset bersih CHF 110,5 miliar di Q4 2022. CS merespons dengan <em>rights issue</em> CHF 4 miliar di mana Saudi National Bank mengambil pangsa 9,88%.</p>
+        </div>
+        <div class="timeline-item" data-phase="acute">
+          <div class="tl-meta"><span class="tl-date">8 – 15 Maret 2023</span><span class="tag-pill tag-trigger">Pemicu Akut Gelombang 2</span></div>
+          <div class="tl-title">Penundaan Laporan Tahunan oleh SEC, Kolaps SVB, Pengakuan ICFR, &amp; Komentar SNB Saudi</div>
+          <p>Penundaan rilis laporan tahunan 2022 pada 9 Maret, kolapsnya SVB di AS pada 10 Maret, pengakuan kelemahan material ICFR pada 14 Maret, dan penolakan tambahan modal oleh Chairman Saudi National Bank pada 15 Maret memicu penarikan simpanan &gt;CHF 10 miliar/hari.</p>
+        </div>
+        <div class="timeline-item" data-phase="acute">
+          <div class="tl-meta"><span class="tl-date">15 – 17 Maret 2023</span><span class="tag-pill tag-trigger">Intervensi Likuiditas Awal</span></div>
+          <div class="tl-title">Penarikan ELA CHF 38 Miliar &amp; Ordonansi Darurat ELA+ / PLB</div>
+          <p>CS menarik CHF 38 miliar ELA beragunan pada 15–16 Maret. Ketika agunan layak menipis dan arus keluar berlanjut (&gt;CHF 60 miliar sepekan), Dewan Federal menerbitkan Ordonansi Darurat pada 16 Maret malam untuk membuka fasilitas ELA+ dan PLB.</p>
+        </div>
+        <div class="timeline-item" data-phase="resolution">
+          <div class="tl-meta"><span class="tl-date">19 – 20 Maret 2023</span><span class="tag-pill tag-res">Keputusan Resolusi</span></div>
+          <div class="tl-title">Akuisisi oleh UBS (CHF 3B), Likuiditas Puncak CHF 168B, &amp; Write-Down AT1 CHF 16,5B</div>
+          <p>UBS mengakuisisi CS seharga CHF 3 miliar (1 saham UBS untuk 22,48 saham CS) tanpa persetujuan RUPS. SNB mencairkan tambahan CHF 30 miliar ELA+ dan CHF 70 miliar PLB (total puncak CHF 168 miliar), Konfederasi menjamin kerugian portofolio non-inti hingga CHF 9 miliar, dan FINMA menghapusbukukan obligasi AT1 senilai CHF 16,5 miliar.</p>
+        </div>
+        <div class="timeline-item" data-phase="resolution">
+          <div class="tl-meta"><span class="tl-date">Agu 2023 – 14 Okt 2025</span><span class="tag-pill tag-dispute">Pasca-Resolusi &amp; Putusan Pengadilan</span></div>
+          <div class="tl-title">Pengakhiran PLB, Laporan FINMA/TBTF/PUK, &amp; Pembatalan Write-Down AT1 (B-2334/2023)</div>
+          <p>UBS mengakhiri PLB dan jaminan negara pada 11 Agustus 2023 (negara meraih premi CHF 161,3 juta). Setelah laporan FINMA (Des 2023), TBTF Dewan Federal (Apr 2024), dan PUK (Des 2024), Pengadilan Administratif Federal Swiss (BVGer) pada 14 Oktober 2025 membatalkan dekrit FINMA atas penghapusan AT1 CHF 16,5 miliar.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 4: INTERACTIVE RESOLUTION FLOWCHART -->
+    <section id="sec-keputusan" class="section-block">
+      <div class="section-header">
+        <span class="section-num">Bagian 04 // Flowchart Keputusan &amp; Arsitektur Resolusi</span>
+        <h2 class="section-title">Diagram Alur Keputusan Akhir Pekan Krisis &amp; Mekanisme Resolusi (17–20 Maret 2023)</h2>
+      </div>
+
+      <div class="flowchart-wrapper">
+        <div class="fc-header">
+          <strong>Flowchart Interaktif 2: Pohon Keputusan Trilateral &amp; 4 Pilar Eksekusi Resolusi (Klik kotak untuk inspeksi)</strong>
+          <span class="tag-pill tag-res">9 Simpul Arsitektur Resolusi</span>
+        </div>
+
+        <div class="fc-stage-banner">TINGKAT 1: GERBANG PEMICU KRISIS (JUMAT MALAM, 17 MARET 2023)</div>
+        <div class="fc-row">
+          <div class="fc-node phase-3" onclick="inspectResFlow(0, this)">
+            <span class="fc-node-step">Kondisi Kritis // 17 Maret 2023</span>
+            <div class="fc-node-title">Ancaman Gagal Bayar Likuiditas Senin Pagi &amp; Habisnya Agunan ELA Standar</div>
+            <div class="fc-node-metric">Arus Keluar &gt;CHF 60B Sepekan • HQLA Terkunci Ring-Fencing &amp; Kliring Intraday</div>
+          </div>
+        </div>
+
+        <div class="fc-connector">▼ Komite Krisis Trilateral (Dewan Federal / EFD, SNB, FINMA) Mengevaluasi 4 Opsi Resolusi ▼</div>
+
+        <div class="fc-stage-banner">TINGKAT 2: EVALUASI 4 JALUR KEPUTUSAN (17 – 19 MARET 2023)</div>
+        <div class="fc-row">
+          <div class="fc-node phase-3" onclick="inspectResFlow(1, this)">
+            <span class="fc-node-step">Opsi A // Ditolak Mutlak</span>
+            <div class="fc-node-title">Kepailitan &amp; Swiss Emergency Plan</div>
+            <div class="fc-node-metric">Risiko Gagal Bayar Global &gt; Lehman (2008)</div>
+          </div>
+          <div class="fc-node phase-3" onclick="inspectResFlow(2, this)">
+            <span class="fc-node-step">Opsi B // Disiapkan FINMA, Ditolak</span>
+            <div class="fc-node-title">Resolusi Mandiri SPE Bail-in (Ps. 28–32)</div>
+            <div class="fc-node-metric">Konversi ~CHF 43B TLAC Tak Hentikan Run</div>
+          </div>
+          <div class="fc-node phase-2" onclick="inspectResFlow(3, this)">
+            <span class="fc-node-step">Opsi C // Skenario Cadangan EFD</span>
+            <div class="fc-node-title">Temporary Public Ownership (Nasionalisasi)</div>
+            <div class="fc-node-metric">Eksposur Neraca ~CHF 530B ke Negara</div>
+          </div>
+          <div class="fc-node phase-4 active-node" onclick="inspectResFlow(4, this)">
+            <span class="fc-node-step">Opsi D // DIPILIH (19 Maret 2023)</span>
+            <div class="fc-node-title">Akuisisi Darurat oleh UBS via Notrecht</div>
+            <div class="fc-node-metric">Pasal 184 &amp; 185 Konstitusi Federal Swiss</div>
+          </div>
+        </div>
+
+        <div class="fc-connector">▼ Opsi D Dieksekusi melalui 4 Pilar Intervensi Terpadu (19–20 Maret 2023) ▼</div>
+
+        <div class="fc-stage-banner">TINGKAT 3: EMPAT PILAR EKSEKUSI RESOLUSI &amp; ALOKASI KERUGIAN</div>
+        <div class="fc-row">
+          <div class="fc-node phase-4" onclick="inspectResFlow(5, this)">
+            <span class="fc-node-step">Pilar Resolusi 1 // Korporasi</span>
+            <div class="fc-node-title">Merger Saham CHF 3B Tanpa RUPS</div>
+            <div class="fc-node-metric">22,48 Saham CS = 1 Saham UBS (CHF 0,76)</div>
+          </div>
+          <div class="fc-node phase-4" onclick="inspectResFlow(6, this)">
+            <span class="fc-node-step">Pilar Resolusi 2 // Bail-in Parsial</span>
+            <div class="fc-node-title">Penghapusan Buku 100% Obligasi AT1</div>
+            <div class="fc-node-metric">-CHF 16,5 Miliar (Dibatalkan BVGer Okt 2025)</div>
+          </div>
+          <div class="fc-node phase-4" onclick="inspectResFlow(7, this)">
+            <span class="fc-node-step">Pilar Resolusi 3 // Likuiditas SNB</span>
+            <div class="fc-node-title">Waterfall ELA + ELA+ + PLB Negara</div>
+            <div class="fc-node-metric">Puncak Pencairan: CHF 168 Miliar</div>
+          </div>
+          <div class="fc-node phase-4" onclick="inspectResFlow(8, this)">
+            <span class="fc-node-step">Pilar Resolusi 4 // Proteksi Aset</span>
+            <div class="fc-node-title">Jaminan Kerugian Portofolio Non-Inti</div>
+            <div class="fc-node-metric">First-Loss UBS CHF 5B + Negara CHF 9B</div>
+          </div>
+        </div>
+
+        <div class="fc-inspector" id="res-flow-inspector" aria-live="polite">
+          <h4 id="rf-step">Keputusan Utama // Opsi D (Dipilih &amp; Dieksekusi 19 Maret 2023)</h4>
+          <h3 id="rf-title">Akuisisi Darurat oleh UBS Group AG Berdasarkan Hukum Darurat Konstitusional (Notrecht)</h3>
+          <p id="rf-desc">
+            Dewan Federal, SNB, dan FINMA memutuskan bahwa pengambilalihan penuh oleh UBS adalah satu-satunya opsi yang mampu langsung mengembalikan kepercayaan deposan dan pasar uang internasional pada Senin pagi, 20 Maret 2023, dengan dukungan penuh dari Federal Reserve AS, Departemen Keuangan AS, dan Bank of England.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 5: SIMULATOR 1 - LIQUIDITY WATERFALL -->
+    <section id="sec-sim-likuiditas" class="section-block">
+      <div class="section-header">
+        <span class="section-num">Bagian 05 // Simulator Interaktif 1: Waterfall Likuiditas</span>
+        <h2 class="section-title">Simulasi Kuantitatif: Mengapa LCR 144% Gagal &amp; Bagaimana Waterfall CHF 168 Miliar SNB Bekerja?</h2>
+      </div>
+
+      <p>
+        Gunakan penggeser (*slider*) di bawah ini untuk mensimulasikan gelombang penarikan dana (*bank run*) pada Maret 2023. Perhatikan bagaimana **HQLA yang Terkunci (*Trapped Liquidity*)** untuk sistem kliring *intraday* dan *ring-fencing* regulator luar negeri membuat penyangga kas bebas Credit Suisse cepat habis, sehingga memaksa pencairan bertingkat (**ELA $\rightarrow$ ELA+ $\rightarrow$ PLB**).
+      </p>
+
+      <div class="sim-box">
+        <div class="sim-controls">
+          <div class="control-group">
+            <label for="slider-outflow">
+              <span>Simulasi Penarikan Dana Akut (Maret 2023):</span>
+              <span id="val-outflow" style="color:var(--accent-red);">CHF 160 Miliar</span>
+            </label>
+            <input type="range" id="slider-outflow" min="20" max="210" step="5" value="160" oninput="updateLiquiditySim()">
+            <small style="color:var(--text-muted);">Geser antara CHF 20B (awal pekan) hingga CHF 208B (puncak penarikan + kebutuhan likuiditas pembukaan Senin, 20 Maret).</small>
+          </div>
+
+          <div class="control-group">
+            <label for="slider-trapped">
+              <span>HQLA Terkunci (Intraday &amp; Ring-Fencing Asing):</span>
+              <span id="val-trapped" style="color:var(--accent-amber);">CHF 65 Miliar (dari Total CHF 115B HQLA)</span>
+            </label>
+            <input type="range" id="slider-trapped" min="0" max="85" step="5" value="65" oninput="updateLiquiditySim()">
+            <small style="color:var(--text-muted);">Dari ~CHF 115B HQLA tersisa pasca-Q4 2022, sekitar CHF 65B tidak dapat dipakai bebas karena terikat operasional &amp; yurisdiksi asing.</small>
+          </div>
+        </div>
+
+        <div class="waterfall-grid">
+          <div class="wf-card">
+            <div class="wf-card-title">1. Penyangga HQLA Bebas Pakai</div>
+            <div class="wf-card-val" id="wf-hqla-used" style="color:var(--accent-blue);">CHF 50,0 B</div>
+            <small id="wf-hqla-cap">Kapasitas Bebas: CHF 50,0 B</small>
+            <div class="wf-bar-bg"><div class="wf-bar-fill" id="bar-hqla" style="width:100%; background:var(--accent-blue);"></div></div>
+          </div>
+
+          <div class="wf-card">
+            <div class="wf-card-title">2. SNB ELA Standar (Beragunan)</div>
+            <div class="wf-card-val" id="wf-ela-used" style="color:var(--accent-teal);">CHF 38,0 B</div>
+            <small>Plafon Agunan Layak: Maks CHF 38,0 B</small>
+            <div class="wf-bar-bg"><div class="wf-bar-fill" id="bar-ela" style="width:100%; background:var(--accent-teal);"></div></div>
+          </div>
+
+          <div class="wf-card">
+            <div class="wf-card-title">3. SNB ELA+ (Privilese Pailit)</div>
+            <div class="wf-card-val" id="wf-elaplus-used" style="color:var(--accent-amber);">CHF 50,0 B</div>
+            <small>Plafon Ordonansi Darurat: Maks CHF 50,0 B</small>
+            <div class="wf-bar-bg"><div class="wf-bar-fill" id="bar-elaplus" style="width:100%; background:var(--accent-amber);"></div></div>
+          </div>
+
+          <div class="wf-card">
+            <div class="wf-card-title">4. Public Liquidity Backstop (PLB)</div>
+            <div class="wf-card-val" id="wf-plb-used" style="color:var(--accent-red);">CHF 22,0 B</div>
+            <small>Dijamin Negara (Ditarik Puncak CHF 70B / Plafon 100B)</small>
+            <div class="wf-bar-bg"><div class="wf-bar-fill" id="bar-plb" style="width:22%; background:var(--accent-red);"></div></div>
+          </div>
+        </div>
+
+        <div class="callout" id="sim-liq-verdict" style="margin-bottom:0;">
+          <div class="callout-title" id="sim-liq-title">Status Likuiditas: Intervensi Hukum Darurat (ELA+ &amp; PLB) Wajib Diaktifkan</div>
+          <p id="sim-liq-text">
+            Dengan penarikan dana sebesar <strong>CHF 160 miliar</strong> dan HQLA terkunci sebesar <strong>CHF 65 miliar</strong>, HQLA bebas pakai (CHF 50B) dan fasilitas ELA beragunan standar (CHF 38B) langsung habis terpakai. Bank mengalami defisit likuiditas sebesar <strong>CHF 110 miliar</strong> yang hanya dapat ditutup oleh SNB melalui pencairan <strong>ELA+ (CHF 50B)</strong> dan <strong>Public Liquidity Backstop / PLB (CHF 22B)</strong>.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 6: SIMULATOR 2 - PARENT SOLO VS CONSOLIDATED CAPITAL -->
+    <section id="sec-sim-modal" class="section-block">
+      <div class="section-header">
+        <span class="section-num">Bagian 06 // Simulator Interaktif 2: Modal Induk Solo vs. Konsolidasi</span>
+        <h2 class="section-title">Simulasi Temuan PUK (Desember 2024): Efek "Regulatory Filter" pada Modal Induk (Credit Suisse AG)</h2>
+      </div>
+
+      <p>
+        Mengapa rasio CET1 konsolidasi grup terlihat aman di **14,1%**, sementara induk operasional utama (**Credit Suisse AG Solo Basis**) mengalami kerapuhan ekuitas? Di neraca tunggal induk (*solo*), penyertaan saham pada anak usaha luar negeri (*foreign participations*, seperti unit Investment Bank di AS dan Inggris) dicatat sebesar nilai buku historis (~CHF 50+ miliar). Ketika anak usaha luar negeri merugi terus-menerus, penurunan nilai penyertaan tersebut seharusnya langsung memotong modal CET1 induk. Uji dampak **Regulatory Filter FINMA** melalui simulator di bawah ini:
+      </p>
+
+      <div class="sim-box">
+        <div class="sim-controls">
+          <div class="control-group">
+            <label for="slider-impairment">
+              <span>Penurunan Nilai Penyertaan Anak Usaha (Participations):</span>
+              <span id="val-impairment" style="color:var(--accent-red);">CHF 20 Miliar</span>
+            </label>
+            <input type="range" id="slider-impairment" min="0" max="32" step="2" value="20" oninput="updateCapitalSim()">
+            <small style="color:var(--text-muted);">Akumulasi penurunan nilai buku penyertaan induk pada anak usaha Investment Bank luar negeri.</small>
+          </div>
+
+          <div class="control-group">
+            <label for="select-filter">
+              <span>Kebijakan "Regulatory Filter" FINMA atas Modal Induk:</span>
+            </label>
+            <select id="select-filter" onchange="updateCapitalSim()" style="width:100%; padding:0.5rem; border-radius:6px; border:1px solid var(--border-color); font-weight:600;">
+              <option value="filtered" selected="">Aktif (Keringanan Regulatory Filter FINMA — Menutupi80% Dampak CET1 Solo)</option>
+              <option value="transparent">Dicabut / Tanpa Filter (Deduksi Penuh Nilai Penyertaan dari CET1 Induk)</option>
+            </select>
+            <small style="color:var(--text-muted);">Laporan PUK (2024) mengkritik keras pemberian filter ini karena menyembunyikan erosi modal solo induk.</small>
+          </div>
+        </div>
+
+        <div class="grid-2">
+          <div class="wf-card">
+            <div class="wf-card-title">Rasio CET1 Konsolidasi Grup (CS Group AG)</div>
+            <div class="wf-card-val" id="cap-group-cet1" style="color:var(--accent-teal);">14,1% (Tampak Kuat)</div>
+            <p style="font-size:0.83rem; color:var(--text-secondary); margin-top:0.35rem;">
+              Pada laporan konsolidasi grup (ATMR ~CHF 250B), kerugian operasional anak usaha sudah dikonsolidasikan secara bertahap dan diimbangi penerbitan modal grup, sehingga penurunan nilai buku penyertaan internal antar-entitas tereliminasi saat konsolidasi.
+            </p>
+          </div>
+
+          <div class="wf-card">
+            <div class="wf-card-title">Rasio CET1 Induk Tunggal (Credit Suisse AG Solo)</div>
+            <div class="wf-card-val" id="cap-solo-cet1" style="color:var(--accent-amber);">12,2% (Ilusi Filter Regulasi)</div>
+            <p id="cap-solo-desc" style="font-size:0.83rem; color:var(--text-secondary); margin-top:0.35rem;">
+              Dengan <strong>Regulatory Filter Aktif</strong>, penurunan nilai penyertaan CHF 20 miliar hanya memotong CHF 4 miliar dari modal CET1 induk. Jika filter dicabut (transparan), modal CET1 efektif induk jatuh ke <strong>6,9%</strong> (di bawah batas minimum prudensial!).
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 7: CONTROVERSIES, STAKEHOLDERS & VERIFIABLE SOURCES -->
+    <section id="sec-kontroversi" class="section-block">
+      <div class="section-header">
+        <span class="section-num">Bagian 07 // Sengketa Hukum, Dampak Pemangku Kepentingan, &amp; Sumber Primer</span>
+        <h2 class="section-title">Putusan Pengadilan AT1 (Oktober 2025) &amp; Daftar Referensi Terverifikasi</h2>
+      </div>
+
+      <div class="grid-2" style="margin-bottom:1.5rem;">
+        <div class="info-card">
+          <h3><span class="tag-pill tag-dispute">Putusan B-2334/2023</span> Pembatalan Write-Down AT1 (14 Oktober 2025)</h3>
+          <p>Pada 19 Maret 2023, pemegang obligasi AT1 kehilangan 100% klaimnya (CHF 16,5 miliar), sedangkan pemegang saham menerima CHF 3,0 miliar saham UBS. Pada <strong>14 Oktober 2025</strong>, Pengadilan Administratif Federal Swiss (BVGer) dalam perkara <strong>B-2334/2023</strong> membatalkan dekrit FINMA karena menilai syarat kontraktual <em>viability event</em> belum terpenuhi (bantuan pemerintah berupa likuiditas berjaminan, bukan bantuan solvabilitas modal) dan Ordonansi Darurat melanggar asas legalitas konstitusional.</p>
+        </div>
+        <div class="info-card">
+          <h3><span class="tag-pill tag-dispute">Sengketa Regulasi</span> FINMA vs. Komisi Parlemen (PUK) &amp; Dewan Federal</h3>
+          <p>FINMA (Desember 2023) menyoroti ketiadaan wewenang denda administratif dan <em>Senior Managers Regime</em>. Sebaliknya, laporan PUK (Desember 2024) mengkritik FINMA karena memberikan keringanan <em>regulatory filter</em> atas modal induk CS AG, sementara Dewan Federal (April 2024) menolak usulan denda individu karena khawatir memicu hak ingkar (<em>nemo tenetur</em>) yang menghambat kooperasi bank.</p>
+        </div>
+      </div>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Institusi / Penulis</th>
+              <th>Tanggal Publikasi</th>
+              <th>Judul Dokumen Primer &amp; Signifikansi</th>
+              <th>Tautan Resmi</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>FINMA</strong></td>
+              <td>19 Des 2023</td>
+              <td><strong>Report: Lessons Learned from the Credit Suisse Crisis</strong> — Evaluasi pengawasan CS 2008–2023, kronologi krisis kepercayaan, dan kesiapan draf resolusi SPE.</td>
+              <td><a href="https://www.finma.ch/en/news/2023/12/20231219-mm-cs-bericht/" target="_blank" rel="noopener">finma.ch</a></td>
+            </tr>
+            <tr>
+              <td><strong>Komisi Investigasi Parlemen Swiss (PUK / PInC)</strong></td>
+              <td>17–20 Des 2024</td>
+              <td><strong>Report of the Parliamentary Investigation Committee on the Credit Suisse Crisis</strong> — Investigasi parlemen atas Dewan Federal, EFD, SNB, dan FINMA (termasuk temuan <em>regulatory filter</em> modal induk).</td>
+              <td><a href="https://www.parlament.ch/centers/documents/en/Zusammenfassung%20Englisch.pdf" target="_blank" rel="noopener">parlament.ch (PDF)</a></td>
+            </tr>
+            <tr>
+              <td><strong>Dewan Federal Swiss (EFD)</strong></td>
+              <td>10 Apr 2024</td>
+              <td><strong>Federal Council Report on Banking Stability (Too-Big-To-Fail Evaluation)</strong> — Laporan 341 halaman dengan 22 paket kebijakan reformasi TBTF.</td>
+              <td><a href="https://www.efd.admin.ch/en/report-tbtf" target="_blank" rel="noopener">efd.admin.ch</a></td>
+            </tr>
+            <tr>
+              <td><strong>Swiss National Bank (SNB)</strong></td>
+              <td>Maret 2024</td>
+              <td><strong>116th Annual Report 2023</strong> — Rincian pencairan fasilitas likuiditas puncak CHF 168 miliar (ELA, ELA+, dan PLB).</td>
+              <td><a href="https://www.snb.ch/dam/jcr:2c18b415-cf73-4ba5-aeb4-7ee8191416e4/annrep_2023_aufstellungen.en.pdf" target="_blank" rel="noopener">snb.ch (PDF)</a></td>
+            </tr>
+            <tr>
+              <td><strong>Pengadilan Administratif Federal Swiss (BVGer)</strong></td>
+              <td>14 Okt 2025</td>
+              <td><strong>Partial Decision B-2334/2023: Unlawful Write-Off of AT1 Capital Instruments</strong> — Putusan resmi yang mencabut dekrit FINMA atas penghapusan AT1 CHF 16,5 miliar.</td>
+              <td><a href="https://www.bvger.ch/en/newsroom/media-releases/unlawful-write-off-of-at1-capital-instruments-2385" target="_blank" rel="noopener">bvger.ch</a></td>
+            </tr>
+            <tr>
+              <td><strong>Paul, Weiss LLP</strong></td>
+              <td>29 Jul 2021</td>
+              <td><strong>Credit Suisse Group Special Committee Report on Archegos Capital Management</strong> — Investigasi independen atas kerugian US$5,5 miliar.</td>
+              <td><a href="https://www.sec.gov/Archives/edgar/data/1159510/000137036821000064/a210729-ex992.htm" target="_blank" rel="noopener">sec.gov (EDGAR)</a></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <div class="container">
+      <p><strong>Dossier Pembelajaran Interaktif Mandiri v3: Studi Kasus Keruntuhan &amp; Resolusi Credit Suisse Group AG</strong></p>
+      <p style="margin-top:0.3rem;">Dilengkapi Flowchart Kronologi, Flowchart Pohon Keputusan Resolusi, Simulator Waterfall Likuiditas, dan Simulator Modal Induk.</p>
+    </div>
+  </footer>
+
+  <script>
+    // Self-Download Function so user can download the standalone HTML file with 1 click
+    function downloadSelfHTML() {
+      const htmlSource = "<!DOCTYPE html>\n" + document.documentElement.outerHTML;
+      const blob = new Blob([htmlSource], { type: "text/html;charset=utf-8" });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = "Credit_Suisse_Crisis_Resolution_Flowchart_v3.html";
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+    }
+
+    // Flowchart 1 Data
+    const chronoFlowData = [
+      {
+        step: "Detail Alur Kronologi // Tahap 1 (2019–Februari 2020)",
+        title: "Disfungsi Tata Kelola & Skandal Penguntitan Eksekutif ('Spygate')",
+        desc: "Investigasi FINMA menemukan 7 operasi penguntitan yang direncanakan antara 2016–2019 terhadap mantan eksekutif CS. Skandal ini memicu pemberhentian COO Pierre-Olivier Bouée dan pengunduran diri CEO Tidjane Thiam pada Februari 2020, menjadi indikator awal rusaknya budaya kepatuhan di tingkat puncak."
+      },
+      {
+        step: "Detail Alur Kronologi // Tahap 2 (Maret 2021)",
+        title: "Kegagalan Manajemen Risiko Lintas Divisi: Greensill (US$10B) & Archegos (US$5,5B)",
+        desc: "Dalam satu bulan yang sama, divisi Asset Management membekukan US$10 miliar reksa dana Greensill yang dipasarkan ke klien Wealth Management, sementara divisi Investment Bank menderita kerugian US$5,5 miliar akibat gagal bayar family office Archegos Capital karena pengabaian batas risiko."
+      },
+      {
+        step: "Detail Alur Kronologi // Tahap 3 (Oktober–Desember 2022)",
+        title: "Rumor Media Sosial, Lonjakan CDS, & Digital Bank Run Gelombang 1",
+        desc: "Spekulasi media sosial awal Oktober 2022 mendorong CDS 5-tahun CS ke ~355 bps dan memicu penarikan aset bersih CHF 110,5 miliar serta simpanan ~CHF 138 miliar sepanjang Q4 2022, menguras penyangga likuiditas internal bank."
+      },
+      {
+        step: "Detail Alur Kronologi // Tahap 4 (Desember 2022–Februari 2023)",
+        title: "Rights Issue CHF 4,0 Miliar & Pengumuman Rugi Bersih 2022 (CHF 7,29 Miliar)",
+        desc: "CS menghimpun modal ekuitas CHF 4 miliar (Saudi National Bank masuk sebagai pemegang saham 9,88%), namun pengumuman rugi bersih tahunan CHF 7,29 miliar pada 9 Februari 2023 kembali menekan kepercayaan pasar."
+      },
+      {
+        step: "Detail Alur Kronologi // Tahap 5 (8–15 Maret 2023)",
+        title: "Empat Pemicu Akut Gelombang 2: SEC, Kolaps SVB, ICFR, & Komentar SNB Saudi",
+        desc: "Pertanyaan teknis SEC (8 Mar), kejatuhan Silicon Valley Bank di AS (10 Mar), pengakuan kelemahan material pengendalian internal pelaporan keuangan / ICFR (14 Mar), dan penolakan tambahan modal oleh Chairman Saudi National Bank (15 Mar) memicu penarikan simpanan >CHF 10 miliar per hari."
+      },
+      {
+        step: "Detail Alur Kronologi // Tahap 6 (15–17 Maret 2023)",
+        title: "Penarikan ELA CHF 38 Miliar & Penerbitan Ordonansi Darurat ELA+ / PLB",
+        desc: "CS menarik CHF 38 miliar ELA beragunan dari SNB. Karena agunan layak hampir habis sementara arus keluar melampaui CHF 60 miliar sepekan, Dewan Federal mengesahkan Ordonansi Darurat pada 16 Maret malam untuk membuka ELA+ (ditarik CHF 20 miliar pada 17 Maret) dan PLB."
+      },
+      {
+        step: "Detail Alur Kronologi // Tahap 7 (19–20 Maret 2023)",
+        title: "Pengambilalihan Darurat oleh UBS, Likuiditas Puncak CHF 168B, & Write-Down AT1",
+        desc: "UBS mengakuisisi CS seharga CHF 3 miliar (tanpa RUPS), SNB mencairkan tambahan CHF 30 miliar ELA+ dan CHF 70 miliar PLB (total puncak CHF 168 miliar), Konfederasi menjamin rugi portofolio non-inti hingga CHF 9 miliar, dan FINMA menghapusbukukan 100% obligasi AT1 senilai CHF 16,5 miliar."
+      },
+      {
+        step: "Detail Alur Kronologi // Tahap 8 (Agustus 2023–14 Oktober 2025)",
+        title: "Pengakhiran Jaminan Negara, Evaluasi PUK, & Pembatalan Write-Down AT1 oleh BVGer",
+        desc: "UBS melunasi dan mengakhiri fasilitas PLB serta jaminan CHF 9 miliar pada 11 Agustus 2023 (premi bersih CHF 161,3 juta bagi negara). Pada 14 Oktober 2025, Pengadilan Administratif Federal Swiss (Perkara B-2334/2023) membatalkan dekrit FINMA atas penghapusan AT1 CHF 16,5 miliar."
+      }
+    ];
+
+    // Flowchart 2 Data
+    const resFlowData = [
+      {
+        step: "Gerbang Pemicu // Jumat Malam, 17 Maret 2023",
+        title: "Ancaman Gagal Bayar Likuiditas Senin Pagi & Terkurasnya Agunan Layak",
+        desc: "CFO Credit Suisse menginformasikan kepada otoritas bahwa bank tidak akan sanggup membuka operasional pada Senin, 20 Maret 2023 karena penarikan simpanan >CHF 10 miliar/hari dan habisnya agunan yang memenuhi syarat fasilitas ELA standar."
+      },
+      {
+        step: "Evaluasi Opsi Resolusi // Opsi A (Dikesampingkan)",
+        title: "Kepailitan Reguler + Aktivasi Swiss Emergency Plan",
+        desc: "Memisahkan anak usaha domestik (Credit Suisse Schweiz AG) sambil membiarkan grup induk dan cabang internasional di AS, Inggris, serta Asia pailit ditolak mutlak karena akan memicu kehancuran pasar derivatif dan perbankan global."
+      },
+      {
+        step: "Evaluasi Opsi Resolusi // Opsi B (Disiapkan FINMA, Ditolak)",
+        title: "Resolusi Mandiri via Single Point of Entry (SPE) Bail-in (Pasal 28–32 UU Perbankan)",
+        desc: "Mengonversi ~CHF 43 miliar obligasi TLAC menjadi ekuitas ditolak oleh Dewan Federal dan SNB karena masalah utama CS adalah hilangnya kepercayaan nasabah (bukan rasio CET1 yang masih 14,1%), serta risiko memicu kepanikan pasar obligasi global pasca-kolapsnya SVB."
+      },
+      {
+        step: "Evaluasi Opsi Resolusi // Opsi C (Plan B Cadangan EFD)",
+        title: "Temporary Public Ownership (TPO / Nasionalisasi Sementara)",
+        desc: "Disiapkan oleh Departemen Keuangan Federal (EFD) hanya sebagai opsi cadangan apabila negosiasi dengan UBS gagal. Ditolak sebagai opsi utama karena membebankan seluruh risiko neraca ~CHF 530 miliar kepada pembayar pajak Swiss."
+      },
+      {
+        step: "Keputusan Utama // Opsi D (Dipilih & Dieksekusi 19 Maret 2023)",
+        title: "Akuisisi Darurat oleh UBS Group AG Berdasarkan Hukum Darurat Konstitusional (Notrecht)",
+        desc: "Dewan Federal menggunakan Pasal 184 ayat (3) dan Pasal 185 ayat (3) Konstitusi Federal Swiss untuk memfasilitasi penggabungan darurat CS ke dalam UBS guna memulihkan kepercayaan pasar uang internasional seketika."
+      },
+      {
+        step: "Pilar Eksekusi 1 // Struktur Transaksi & Tata Kelola",
+        title: "Akuisisi Saham Senilai CHF 3,0 Miliar & Penghapusan Hak Suara RUPS",
+        desc: "Pemegang saham CS menerima 1 saham UBS untuk setiap 22,48 saham CS (setara CHF 0,76/saham CS). Ordonansi Darurat mencabut syarat persetujuan RUPS UBS dan CS agar transaksi langsung mengikat secara hukum."
+      },
+      {
+        step: "Pilar Eksekusi 2 // Penyerapan Kerugian Modal Hibrida",
+        title: "Penghapusan Buku 100% Obligasi AT1 Senilai CHF 16,5 Miliar (Dibatalkan BVGer Okt 2025)",
+        desc: "FINMA memerintahkan penghapusan penuh obligasi AT1 untuk memperkuat ekuitas inti. Namun, pada 14 Oktober 2025, Pengadilan Administratif Federal Swiss (B-2334/2023) membatalkan dekrit tersebut karena syarat kontraktual 'viability event' dan dasar hukum konstitusional dinilai tidak terpenuhi."
+      },
+      {
+        step: "Pilar Eksekusi 3 // Penyangga Likuiditas Bank Sentral",
+        title: "Waterfall Likuiditas Puncak SNB Sebesar CHF 168 Miliar (ELA + ELA+ + PLB)",
+        desc: "Kombinasi CHF 38 miliar ELA beragunan, CHF 50 miliar ELA+ dengan hak istimewa kepailitan, dan CHF 70 miliar Public Liquidity Backstop (PLB) yang dijamin pemerintah memastikan seluruh kewajiban CS dapat dibayar pada 20 Maret 2023."
+      },
+      {
+        step: "Pilar Eksekusi 4 // Pembagian Risiko Portofolio Aset Non-Inti",
+        title: "Jaminan Kerugian Negara CHF 9 Miliar di Atas Tanggungan Pertama UBS CHF 5 Miliar",
+        desc: "Untuk memitigasi ketidakpastian valuasi aset non-inti CS, UBS menanggung CHF 5 miliar kerugian pertama dan Konfederasi Swiss menjamin hingga CHF 9 miliar berikutnya (diakhiri secara sukarela oleh UBS pada 11 Agustus 2023 tanpa klaim kerugian)."
+      }
+    ];
+
+    function inspectChronoFlow(idx, el) {
+      el.closest('.flowchart-wrapper').querySelectorAll('.fc-node').forEach(n => n.classList.remove('active-node'));
+      el.classList.add('active-node');
+      const d = chronoFlowData[idx];
+      document.getElementById('cf-step').textContent = d.step;
+      document.getElementById('cf-title').textContent = d.title;
+      document.getElementById('cf-desc').textContent = d.desc;
+    }
+
+    function inspectResFlow(idx, el) {
+      el.closest('.flowchart-wrapper').querySelectorAll('.fc-node').forEach(n => n.classList.remove('active-node'));
+      el.classList.add('active-node');
+      const d = resFlowData[idx];
+      document.getElementById('rf-step').textContent = d.step;
+      document.getElementById('rf-title').textContent = d.title;
+      document.getElementById('rf-desc').textContent = d.desc;
+    }
+
+    // Simulator 1: Liquidity Waterfall
+    function updateLiquiditySim() {
+      const outflow = parseFloat(document.getElementById('slider-outflow').value);
+      const trapped = parseFloat(document.getElementById('slider-trapped').value);
+      const totalHqla = 115; // CHF 115B remaining entering March 2023
+      const freeHqla = Math.max(0, totalHqla - trapped);
+
+      document.getElementById('val-outflow').textContent = `CHF ${outflow} Miliar`;
+      document.getElementById('val-trapped').textContent = `CHF ${trapped} Miliar (dari Total CHF 115B HQLA)`;
+      document.getElementById('wf-hqla-cap').textContent = `Kapasitas Bebas: CHF ${freeHqla.toFixed(1)} B`;
+
+      let rem = outflow;
+      const usedHqla = Math.min(rem, freeHqla);
+      rem -= usedHqla;
+
+      const usedEla = Math.min(rem, 38);
+      rem -= usedEla;
+
+      const usedElaPlus = Math.min(rem, 50);
+      rem -= usedElaPlus;
+
+      const usedPlb = Math.min(rem, 100);
+      rem -= usedPlb;
+
+      document.getElementById('wf-hqla-used').textContent = `CHF ${usedHqla.toFixed(1)} B`;
+      document.getElementById('bar-hqla').style.width = `${freeHqla > 0 ? (usedHqla / freeHqla) * 100 : 100}%`;
+
+      document.getElementById('wf-ela-used').textContent = `CHF ${usedEla.toFixed(1)} B`;
+      document.getElementById('bar-ela').style.width = `${(usedEla / 38) * 100}%`;
+
+      document.getElementById('wf-elaplus-used').textContent = `CHF ${usedElaPlus.toFixed(1)} B`;
+      document.getElementById('bar-elaplus').style.width = `${(usedElaPlus / 50) * 100}%`;
+
+      document.getElementById('wf-plb-used').textContent = `CHF ${usedPlb.toFixed(1)} B`;
+      document.getElementById('bar-plb').style.width = `${(usedPlb / 100) * 100}%`;
+
+      const snbTotal = usedEla + usedElaPlus + usedPlb;
+      const verdictBox = document.getElementById('sim-liq-verdict');
+      const titleEl = document.getElementById('sim-liq-title');
+      const textEl = document.getElementById('sim-liq-text');
+
+      if (snbTotal === 0) {
+        verdictBox.className = "callout";
+        titleEl.textContent = "Status Likuiditas: Mandiri (Ditutup oleh Penyangga HQLA Bebas)";
+        textEl.innerHTML = `Arus keluar sebesar <strong>CHF ${outflow} miliar</strong> masih dapat dipenuhi seluruhnya dari HQLA bebas pakai (CHF ${freeHqla} miliar) tanpa perlu menarik fasilitas darurat SNB.`;
+      } else if (usedElaPlus === 0 && usedPlb === 0) {
+        verdictBox.className = "callout warn";
+        titleEl.textContent = "Status Likuiditas: Tekanan Berat — Mengandalkan ELA Beragunan Standar";
+        textEl.innerHTML = `HQLA bebas pakai (CHF ${freeHqla}B) habis! Bank terpaksa menarik fasilitas <strong>ELA beragunan dari SNB sebesar CHF ${usedEla.toFixed(1)} miliar</strong> (kondisi Rabu, 15 Maret 2023).`;
+      } else {
+        verdictBox.className = "callout danger";
+        titleEl.textContent = `Status Likuiditas Kritis: Total Bantuan Darurat SNB Mencapai CHF ${snbTotal.toFixed(1)} Miliar`;
+        textEl.innerHTML = `Karena HQLA bebas (CHF ${freeHqla}B) dan agunan layak ELA standar (CHF 38B) telah habis, bank akan mengalami <strong>gagal bayar likuiditas</strong> tanpa Ordonansi Darurat Dewan Federal. SNB harus menyuntikkan <strong>CHF ${usedElaPlus.toFixed(1)}B via ELA+</strong> dan <strong>CHF ${usedPlb.toFixed(1)}B via Public Liquidity Backstop (PLB)</strong>.`;
+      }
+    }
+
+    // Simulator 2: Parent Solo vs Group Capital
+    function updateCapitalSim() {
+      const imp = parseFloat(document.getElementById('slider-impairment').value);
+      const mode = document.getElementById('select-filter').value;
+      document.getElementById('val-impairment').textContent = `CHF ${imp} Miliar`;
+
+      // Base Parent Solo CET1 Capital ~ CHF 37B on Solo RWA ~ CHF 275B (Base Solo CET1 = 13.5%)
+      const baseSoloCapital = 37.0;
+      const soloRwa = 275.0;
+
+      const filteredDeduction = imp * 0.20; // Filter shields 80% of participation write-down
+      const transparentDeduction = imp * 1.0;
+
+      const reportedSoloCap = Math.max(0, baseSoloCapital - filteredDeduction);
+      const trueSoloCap = Math.max(0, baseSoloCapital - transparentDeduction);
+
+      const reportedRatio = (reportedSoloCap / soloRwa) * 100;
+      const trueRatio = (trueSoloCap / soloRwa) * 100;
+
+      const soloValEl = document.getElementById('cap-solo-cet1');
+      const soloDescEl = document.getElementById('cap-solo-desc');
+
+      if (mode === 'filtered') {
+        soloValEl.textContent = `${reportedRatio.toFixed(1)}% (Tertutupi Filter Regulasi)`;
+        soloValEl.style.color = "var(--accent-amber)";
+        soloDescEl.innerHTML = `Dengan <strong>Regulatory Filter Aktif</strong>, penurunan nilai penyertaan anak usaha sebesar CHF ${imp} miliar hanya mengurangi modal CET1 induk sebesar CHF ${filteredDeduction.toFixed(1)} miliar. Padahal tanpa filter, rasio CET1 efektif induk sebenarnya jatuh ke <strong>${trueRatio.toFixed(1)}%</strong>.`;
+      } else {
+        soloValEl.textContent = `${trueRatio.toFixed(1)}% (Transparan Tanpa Filter)`;
+        soloValEl.style.color = trueRatio < 10 ? "var(--accent-red)" : "var(--accent-teal)";
+        soloDescEl.innerHTML = `Dengan <strong>Filter Regulasi Dicabut (Transparan)</strong>, penurunan nilai penyertaan CHF ${imp} miliar langsung memotong modal CET1 induk tunggal dari CHF ${baseSoloCapital}B menjadi <strong>CHF ${trueSoloCap.toFixed(1)}B</strong> (Rasio CET1 Solo: <strong>${trueRatio.toFixed(1)}%</strong>), memicu intervensi restrukturisasi jauh lebih dini.`;
+      }
+    }
+
+    function filterTimeline(phase, btn) {
+      btn.parentElement.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      document.querySelectorAll('#timeline-list .timeline-item').forEach(item => {
+        if (phase === 'all' || item.getAttribute('data-phase') === phase) {
+          item.classList.remove('hidden-by-filter');
+        } else {
+          item.classList.add('hidden-by-filter');
+        }
+      });
+    }
+
+    let currentMode = 'all';
+    function setViewMode(mode) {
+      currentMode = mode;
+      document.getElementById('btn-mode-all').classList.toggle('active', mode === 'all');
+      document.getElementById('btn-mode-tab').classList.toggle('active', mode === 'tab');
+      const sections = document.querySelectorAll('.section-block');
+      if (mode === 'all') {
+        sections.forEach(s => s.classList.remove('hidden-by-filter'));
+      } else {
+        const activeLink = document.querySelector('.nav-links .nav-btn.active');
+        const targetId = activeLink ? activeLink.getAttribute('href').substring(1) : 'sec-ringkasan';
+        sections.forEach(s => s.classList.toggle('hidden-by-filter', s.id !== targetId));
+      }
+    }
+
+    document.querySelectorAll('.nav-links .nav-btn').forEach(link => {
+      link.addEventListener('click', function(e) {
+        document.querySelectorAll('.nav-links .nav-btn').forEach(l => l.classList.remove('active'));
+        this.classList.add('active');
+        if (currentMode === 'tab') {
+          e.preventDefault();
+          const targetId = this.getAttribute('href').substring(1);
+          document.querySelectorAll('.section-block').forEach(s => {
+            s.classList.toggle('hidden-by-filter', s.id !== targetId);
+          });
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+      });
+    });
+  </script>
+
+</body></html>
